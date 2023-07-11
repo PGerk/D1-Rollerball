@@ -6,10 +6,12 @@ using UnityEngine.SceneManagement;
 public class Goal : MonoBehaviour
 {
     bool active = false;
-    private void Start()
+    TextHandling text;
+    private void Awake()
     {
-        
+        text = FindObjectOfType<TextHandling>();
     }
+
     private void OnTriggerEnter(Collider other)
     {
         if (active)
@@ -17,8 +19,16 @@ public class Goal : MonoBehaviour
             Movement component = other.gameObject.GetComponent<Movement>();
             if (component != null)
             {
-                //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
                 Debug.Log("Goal!");
+                if (text.curTime < text.bestTime)
+                {
+                    string levelString = "Level" + SceneManager.GetActiveScene().buildIndex;
+                    PlayerPrefs.SetFloat(levelString, text.curTime);
+                }
+
+                //TODO: Load Main Menu
+                //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+
             }
         }
         else

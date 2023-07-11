@@ -19,7 +19,7 @@ public class TextHandling : MonoBehaviour
 
         curTime = 0f;
         
-        //Fid best time, set time text
+        //Find best time, set time text
         string levelString = "Level" + SceneManager.GetActiveScene().buildIndex;
         bestTime = PlayerPrefs.GetFloat(levelString, 0f);
         string bestTimeString;
@@ -30,6 +30,7 @@ public class TextHandling : MonoBehaviour
         else
         {
             bestTimeString = "None";
+            bestTime = Mathf.Infinity;
         }
         texts[7].text = bestTimeString;
 
@@ -47,9 +48,7 @@ public class TextHandling : MonoBehaviour
     public void AddPoint()
     {
         points++;
-        texts[0].text = points.ToString();
-        Debug.Log("Points: " + points);
-        Debug.Log("Maximum Points: " + itemAmount);
+        texts[1].text = points.ToString();
         if (points == itemAmount) goal.ActivateGoal();
     }
 
