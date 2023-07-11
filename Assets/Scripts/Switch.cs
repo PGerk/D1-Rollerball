@@ -4,18 +4,21 @@ using UnityEngine;
 
 public class Switch : MonoBehaviour
 {
-    public BoxCollider tbd;
+    BoxCollider tbd;
 
     public GameObject target;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
+        tbd = GetComponent<BoxCollider>();
     }
     private void OnTriggerEnter(Collider other)
     {
         Destroy(tbd);
-        target.SetActive(!target.activeSelf);
+        if (target != null)
+        {
+            target.SetActive(!target.activeSelf);
+        }
         transform.position -= new Vector3(0f, 0.1f, 0f);
     }
 
