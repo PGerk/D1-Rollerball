@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class Item : MonoBehaviour
 {
-    PointCounter pointCounter;
+    TextHandling textHandling;
     private void Awake()
     {
-        pointCounter = FindObjectOfType<PointCounter>();
+        textHandling = FindObjectOfType<TextHandling>();
     }
     private void OnTriggerEnter()
     {
-        pointCounter.AddPoint();
+        textHandling.AddPoint();
         Destroy(gameObject);
     }
 }

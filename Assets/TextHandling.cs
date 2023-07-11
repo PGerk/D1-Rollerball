@@ -10,6 +10,7 @@ public class TextHandling : MonoBehaviour
     public float curTime, bestTime;
     int points = 0;
     int itemAmount;
+    Goal goal;
 
     // Start is called before the first frame update
     void Start()
@@ -38,12 +39,18 @@ public class TextHandling : MonoBehaviour
         //Find Item amount, set text
         itemAmount = GameObject.FindGameObjectsWithTag("Item").Length;
         texts[3].text = itemAmount.ToString();
+
+        //Find Goal
+        goal = FindObjectOfType<Goal>();
     }
 
     public void AddPoint()
     {
         points++;
         texts[0].text = points.ToString();
+        Debug.Log("Points: " + points);
+        Debug.Log("Maximum Points: " + itemAmount);
+        if (points == itemAmount) goal.ActivateGoal();
     }
 
     // Update is called once per frame

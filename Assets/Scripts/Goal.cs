@@ -5,12 +5,30 @@ using UnityEngine.SceneManagement;
 
 public class Goal : MonoBehaviour
 {
+    bool active = false;
+    private void Start()
+    {
+        
+    }
     private void OnTriggerEnter(Collider other)
     {
-        Movement component = other.gameObject.GetComponent<Movement>();
-        if (component != null)
+        if (active)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            Movement component = other.gameObject.GetComponent<Movement>();
+            if (component != null)
+            {
+                //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                Debug.Log("Goal!");
+            }
         }
+        else
+        {
+            Debug.Log("Inactive!");
+        }
+    }
+
+    public void ActivateGoal()
+    {
+        active = true;
     }
 }
