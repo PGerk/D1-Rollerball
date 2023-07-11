@@ -129,7 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35373c6b54532a54991c6c9007f9f9b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  threshold: -50
+  threshold: -20
 --- !u!54 &8535342534880728230
 Rigidbody:
   m_ObjectHideFlags: 0
