@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Movement : MonoBehaviour
 {
@@ -78,6 +79,12 @@ public class Movement : MonoBehaviour
         {
             godmode = !godmode;
             rb.isKinematic = !rb.isKinematic;
+        }
+
+        //Load Main Menu on R press
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene(1);
         }
 
     }
