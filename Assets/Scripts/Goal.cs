@@ -19,7 +19,7 @@ public class Goal : MonoBehaviour
             Movement component = other.gameObject.GetComponent<Movement>();
             if (component != null)
             {
-                Debug.Log("Goal!");
+                //Debug.Log("Goal!");
                 if (text.curTime < text.bestTime)
                 {
                     string levelString = "Level" + SceneManager.GetActiveScene().buildIndex;
@@ -28,12 +28,13 @@ public class Goal : MonoBehaviour
 
                 //TODO: Load Main Menu
                 //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                SceneManager.LoadScene(1);
 
             }
         }
         else
         {
-            Debug.Log("Inactive!");
+            //Debug.Log("Inactive!");
         }
     }
 
