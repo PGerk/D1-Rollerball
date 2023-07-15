@@ -18,7 +18,7 @@ public class TextHandling : MonoBehaviour
         texts = GetComponentsInChildren<TextMeshProUGUI>();
 
         curTime = 0f;
-        
+
         //Find best time, set time text
         string levelString = "Level" + SceneManager.GetActiveScene().buildIndex;
         bestTime = PlayerPrefs.GetFloat(levelString, 0f);
@@ -49,7 +49,11 @@ public class TextHandling : MonoBehaviour
     {
         points++;
         texts[1].text = points.ToString();
-        if (points == itemAmount) goal.ActivateGoal();
+        if (points == itemAmount)
+        {
+            texts[1].color = Color.green;
+            goal.ActivateGoal();
+        }
     }
 
     // Update is called once per frame
