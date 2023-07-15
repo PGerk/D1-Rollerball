@@ -1,27 +1,40 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
+    public const string FOLLOWS_Y_PREF = "player.cameraFollowsY";
 
     public GameObject target;
 
+    public float minY = 0;
+
     public float xOffset, yOffset, zOffset;
-    // Start is called before the first frame update
+
+    public float followingYOffset = -1;
+
+    private bool followY = false;
+
     void Start()
     {
+        followY = PlayerPrefs.GetInt(FOLLOWS_Y_PREF, 0) != 0;
+        if (followY && followingYOffset != -1) yOffset = followingYOffset;
+
         transform.position = target.transform.position + new Vector3(xOffset, yOffset, zOffset);
         transform.LookAt(target.transform.position);
     }
 
-    // Update is called once per frame
     void Update()
     {
-        float y = transform.position.y;
-        transform.position = target.transform.position + new Vector3(xOffset, yOffset, zOffset);
-        transform.position = new Vector3(transform.position.x, y, transform.position.z);
-        //transform.position = target.transform.position + new Vector3(xOffset, 0f, zOffset);
-        //transform.LookAt(target.transform.position);
+        var tpos = target.transform.position;
+        transform.position = new Vector3(
+            tpos.x + xOffset,
+            followY
+                ? Mathf.Max(minY, Mathf.Lerp(transform.position.y, tpos.y + yOffset, .05f))
+                : transform.position.y,
+            tpos.z + zOffset
+        );
     }
 }

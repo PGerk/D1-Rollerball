@@ -5308,9 +5308,9 @@ MonoBehaviour:
   target: {fileID: 536816467}
   minY: 0
   xOffset: 0
-  yOffset: 2
+  yOffset: 12
   zOffset: -6
-  followingYOffset: -1
+  followingYOffset: 3
 --- !u!114 &195067837
 MonoBehaviour:
   m_ObjectHideFlags: 0
