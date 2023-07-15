@@ -10,7 +10,7 @@ public class ItemPrefabScript : MonoBehaviour
     void Start()
     {
         audioSource.Play();
-        Destroy(gameObject, 2f);
+        Destroy(gameObject, 3f);
     }
 }
 
