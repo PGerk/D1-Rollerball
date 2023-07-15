@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -17,6 +14,8 @@ public class Movement : MonoBehaviour
 
     bool godmode = false;
 
+    public bool OnGround { get; private set; } = false;
+    public bool HasInput => xInput != 0 || yInput != 0 || jumpInput != 0;
 
     void Update()
     {
@@ -26,6 +25,12 @@ public class Movement : MonoBehaviour
     private void OnCollisionStay(Collision collision)
     {
         numJumps = 2;
+        OnGround = true;
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        OnGround = false;
     }
 
     private void FixedUpdate()
