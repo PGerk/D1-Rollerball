@@ -109,7 +109,7 @@ public class Movement : MonoBehaviour
         //Load Main Menu on R press
         if (Input.GetKeyDown(KeyCode.R))
         {
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene(0);
         }
 
     }

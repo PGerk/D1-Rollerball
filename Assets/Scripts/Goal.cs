@@ -26,9 +26,7 @@ public class Goal : MonoBehaviour
                     PlayerPrefs.SetFloat(levelString, text.curTime);
                 }
 
-                //TODO: Load Main Menu
-                //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-                SceneManager.LoadScene(1);
+                SceneManager.LoadScene(0);
 
             }
         }
