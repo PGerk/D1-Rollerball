@@ -126,7 +126,7 @@ public class Movement : MonoBehaviour
         }
         if (godmode)
         {
-            rb.position += moveVector;
+            rb.position += moveVector * .5f;
             jumpInput = xInput = yInput = 0;
         }
     }
